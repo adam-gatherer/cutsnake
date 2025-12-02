@@ -1,11 +1,11 @@
-# module specific var
+﻿# module specific var
 locals {
   name_prefix = "${var.project}-${var.env}"
 }
 
 # create dynamodb table
 resource "aws_dynamodb_table" "links" {
-  name         = "${locals.name_prefix}-links"
+  name         = "${local.name_prefix}-links"
   billing_mode = "PAY_PER_REQUEST"
   hash_key     = "pk"
   range_key    = "sk"
@@ -34,7 +34,7 @@ resource "aws_dynamodb_table" "links" {
 
 # analytics table
 resource "aws_dynamodb_table" "analytics" {
-  name         = "${locals.name_prefix}-analytics"
+  name         = "${local.name_prefix}-analytics"
   billing_mode = "PAY_PER_REQUEST"
   hash_key     = "pk"
   range_key    = "sk"
